@@ -1,0 +1,81 @@
+{#{% extends "gradnet/base.html" %} {% load static %}#}
+{##}
+{#{% block custom_style %}#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block scripts %}#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#    <h1>Map of the World with following countries highlighted</h1>#}
+    <ul>
+        {% for country in object_list %}
+            <li>
+                <a href="{% url 'university-list' program_slug=program_slug country_slug=country.slug %}">{{ country.name }}</a>
+            </li>
+        {% empty %}
+            <li>No countries yet.</li>
+        {% endfor %}
+    </ul>
+{##}
+{##}
+{#{% endblock %}#}
+{##}
+<style>
+    html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 100%;
+}
+</style>
+<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script>
+    /**
+ * Create the map
+ */
+var map = AmCharts.makeChart("chartdiv", {
+  "type": "map",
+  "theme": "light",
+  "projection": "eckert3",
+  "dataProvider": {
+    "map": "worldLow",
+    "getAreasFromMap": true
+  },
+  "areasSettings": {
+    "selectedColor": "#CC0000",
+    "selectable": true
+  },
+  /**
+   * Add init event to perform country selection
+   */
+  "listeners": [{
+    "event": "init",
+    "method": function(e) {
+      preSelectCountries( ["BD"]);
+    }
+  }]
+});
+
+/**
+ * Function which extracts currently selected country list.
+ * Returns array consisting of country ISO2 codes
+ */
+function preSelectCountries(list) {
+  for(var i = 0; i < list.length; i++) {
+    var area = map.getObjectById(list[i]);
+    area.showAsSelected = true;
+    map.returnInitialColor(area);
+  }
+}
+</script>
+<div id="chartdiv"></div>
+

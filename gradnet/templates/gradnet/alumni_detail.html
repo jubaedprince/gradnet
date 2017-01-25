@@ -1,0 +1,104 @@
+{% extends "gradnet/base.html" %}  {% load static %}
+
+{% block custom_style %}
+    <link href="{% static "gradnet/css/alumni-profile.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+    <!-- PRICING -->
+    <section class="section" id="pricing">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <img class="img-responsive" src="{{ alumni.avatar.url }}">
+                </div>
+                <div class="col-sm-10 alumni-info">
+                    <h3>{{ alumni.name }}</h3>
+
+
+                    <p class="alumni-profile-description">{{ alumni.short_bio }}</p>
+                    <div class="alumni-profile-info">
+                        <p>
+                            <img class="work-icon" src="{% static "gradnet/css/icons/study.svg" %}"> Class
+                            of {{ alumni.class_of }},
+                            {{ alumni.university }}
+                            <img class="work-icon"
+                                 src="{% static "gradnet/css/icons/portfolio.svg" %}"> {{ alumni.current_position }},
+                            {{ alumni.current_employer }}
+                            <img class="work-icon"
+                                 src="{% static "gradnet/css/icons/map-marker.svg" %}"> {{ alumni.current_location }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="job-box">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <p class="text-muted"><a href="#">Login in</a> or <a href="#">sign up</a> to get help from
+                                Gulshan</p>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <a href="/alumni/{{ alumni.slug }}/services" type="button" class="btn btn-lg text-center btn-custom"><span
+                                    class="fa fa-gears fa-2x icon-alumni-profile"></span><br>Service
+                            </a>
+                            <a href="/alumni/{{ alumni.slug }}/message" type="button" class="btn btn-lg text-center btn-custom"><span
+                                    class="fa fa-envelope fa-2x icon-alumni-profile"></span><br>Messages
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12 alumni-questions">
+                    <div class="questions-box">
+                        <h1>Preparation</h1>
+
+                        <h3>For how long did you prepare for GMAT?</h3>
+                        <p>1-3 months fully dedicated preparation</p>
+
+                        <h3>How did you go about your preparation?</h3>
+                        <p>Rully dedicated preparation. Rully dedicated preparation. Rully dedicated preparation</p>
+
+                        <h3>What books or resources did you find helpful?</h3>
+                        <p>Rully dedicated preparation. Rully dedicated preparation. Rully dedicated preparation</p>
+                    </div>
+                    <div class="questions-box">
+                        <h1>School Selection</h1>
+                        <h3>For how long did you prepare for GMAT?</h3>
+                        <p>1-3 months fully dedicated preparation</p>
+
+                        <h3>How did you go about your preparation?</h3>
+                        <p>Rully dedicated preparation. Rully dedicated preparation. Rully dedicated preparation</p>
+
+                        <h3>What books or resources did you find helpful?</h3>
+                        <p>Rully dedicated preparation. Rully dedicated preparation. Rully dedicated preparation</p>
+                    </div>
+                    <div class="questions-box">
+                        <h1>MBA and beyond</h1>
+                        <h3>For how long did you prepare for GMAT?</h3>
+                        <p>1-3 months fully dedicated preparation</p>
+
+                        <h3>How did you go about your preparation?</h3>
+                        <p>Rully dedicated preparation. Rully dedicated preparation. Rully dedicated preparation</p>
+
+                        <h3>What books or resources did you find helpful?</h3>
+                        <p>Rully dedicated preparation. Rully dedicated preparation. Rully dedicated preparation</p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end row -->
+
+        </div> <!-- end container -->
+    </section>
+    <!-- End Pricing -->
+
+
+{% endblock %}

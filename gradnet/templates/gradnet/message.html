@@ -1,0 +1,43 @@
+{% extends "gradnet/base.html" %} {% load static %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-4">
+             <div class="panel panel-default">
+                <div class="panel-heading"><p>Senders</p></div>
+                <div class="panel-body">
+                    {% for user in senders %}
+                        <p><a href="/message?user_id={{ user.id }}">{{ user.email }}</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+             <div class="panel panel-default">
+                <div class="panel-heading"><p>Conversations</p></div>
+                <div class="panel-body">
+                    {% for message in messages %}
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p>{{ message.body }}</p>
+                            </div>
+                            <div class="panel-footer">
+                               <p>{{ message.sender }}, {{ message.created_at }}</p>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p>Please select a sender</p>
+                    {% endfor %}
+                    {% if messages|length != 0 %}
+                        <form method="POST">
+                            {% csrf_token %}
+                            <textarea name="message_body"></textarea>
+                            <button class="btn btn-default" type="submit">Send</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

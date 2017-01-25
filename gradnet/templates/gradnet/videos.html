@@ -1,0 +1,17 @@
+{% extends "gradnet/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+{% for video in videos %}
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>{{ video.title }}</h3></div>
+        <div class="panel-body">  <h3>{{ video.description }}</h3></div>
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/{%  id_only video.url %}" frameborder="0" allowfullscreen></iframe>
+    </div>
+{% empty %}
+    <li>No video yet.</li>
+{% endfor %}
+
+{% endblock %}

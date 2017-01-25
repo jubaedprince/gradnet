@@ -1,0 +1,25 @@
+{% extends "gradnet/base.html" %} {% load static %}
+{% block content %}
+    <div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 id="myModalLabel">Login</h4>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form method="POST" action="/login">
+                     <h1>  {{ error_message }}</h1>
+                    {% csrf_token %}
+                    <input type="email" name="email" class="form-control" placeholder="email">
+                    <input type="password" name="password" class="form-control" placeholder="password">
+                    <button class="btn btn-default" type="submit">Login</button>
+                </form>
+
+                <p>Don't have an account?</p>
+                <a href="{% url 'alumni-signup' %}" class="btn btn-default">Sign Up as an Alumni</a>
+                <p>or</p>
+                <a class="btn btn-default">Sign Up as a Student</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

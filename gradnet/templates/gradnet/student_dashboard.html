@@ -1,0 +1,48 @@
+{% extends "gradnet/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>Alumni Dashboard</h1><br><br>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>Connections</h2>
+                </div>
+                <div class="panel-body">
+                    <p>23 Connections</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+             <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>Messages</h2>
+                </div>
+                <div class="panel-body">
+                    <p>{{ unread_messages| length }} unread message</p>
+                    {% for message in unread_messages %}
+                        <p>{{ message.sender}}: {{ message.body }}</p>
+                    {% endfor %}
+                <a href="/message" class="btn btn-default">View Messages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    <div class="row">
+        <h1>Service Requests</h1>
+        <h2>Pending</h2>
+        <div>
+            <p>Ridwan Requested resume review - Accept within 12 hours 2 minutes</p>
+            <p>Farhan Requested resume review - Accept within 6 hours 2 minutes</p>
+        </div>
+
+        <h2>Accepted</h2>
+        <div>
+            <p>Sirajum Requested personal statement review - Finish within 36 hours</p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "gradnet/base.html" %}{% load static %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h3 class="university-country">{{ country.name }}</h3>
+            <p class="university-program">{{ program.name }}</p>
+        </div>
+    </div> <!-- end row -->
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row"></div>
+
+            {% for university in object_list %}
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div id="card-head" class="card">
+                        <div class="card-header">
+                            <a href="{% url 'alumni-list' program_slug=program_slug university_slug=university.slug %}">
+                                <!-- INFO -->
+                                <div class="card-logo">
+                                    <img alt="UC" src="{{ university.logo_image.url }}">
+                                </div>
+
+                                <div class="header-bg"
+                                     style="background-image: url({{ university.university_image.url }})"></div>
+                                <div class="col">
+                                    <div class="card-body-icon">
+                                        <h1 class="city">{{ university.name }}</h1>
+                                        <p>{% get_alumni_count university.slug program_slug %} Alumni</p>
+                                        <div class="university-alumni">
+
+                                            <img alt="UC" src="{% static "gradnet/images/user7.jpg" %}">
+                                            <img alt="UC" src="{% static "gradnet/images/user5.jpg" %}">
+                                            <img alt="UC" src="{% static "gradnet/images/user4.jpg" %}">
+                                            <img alt="UC" src="{% static "gradnet/images/user4.png" %}">
+                                            <img alt="UC" src="{% static "gradnet/images/user2.jpg" %}">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            {% empty %}
+                <li>No universities yet.</li>
+            {% endfor %}
+
+        </div>
+    </div><!-- end col -->
+
+    <!-- end col -->
+    </div>
+    <!-- end row -->
+
+{% endblock %}

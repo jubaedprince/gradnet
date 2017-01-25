@@ -1,0 +1,16 @@
+{% extends "gradnet/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+{% for faq in faqs %}
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>{{ faq.question }}</h3></div>
+        <div class="panel-body">  <h3>{{ faq.answer }}</h3></div>
+    </div>
+{% empty %}
+    <li>No faq yet.</li>
+{% endfor %}
+
+{% endblock %}

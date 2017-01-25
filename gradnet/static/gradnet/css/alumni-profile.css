@@ -1,0 +1,77 @@
+.container {
+  text-align: left;
+}
+
+.alumni-profile-name{
+  font-size: 30px;
+  font-family: 'Poiret One', cursive;
+}
+
+.alumni-profile-description{
+  font-size: 15px;
+  font-family: 'Roboto Condensed', sans-serif;
+  /*font-family: 'Josefin Sans', sans-serif;*/
+}
+.alumni-profile-info>p {
+  font-size: 15px;
+  /*font-family: 'Roboto Condensed', sans-serif;*/
+  font-family: 'Josefin Sans', sans-serif;
+  color: rgba(73, 97, 116, 0.72);
+}
+
+.alumni-info{
+  margin-top: 5%;
+}
+
+.btn-custom{
+  margin: 5px;
+}
+
+.job-box{
+ background-color: rgb(218, 218, 218);
+}
+
+.job-box>div>div>p{
+  padding-top: 4%;
+  font-size: 16px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 200;
+  color: black;
+}
+
+
+a{
+
+  font-size: 16px;
+}
+
+.questions-box>h1{
+  text-align: center;
+  margin: 10px 0 15px -13px;
+  color: black;
+}
+
+
+.questions-box h3{
+  font-size: 18px;
+  color: black;
+}
+
+
+.questions-box p{
+  font-size: 16px;
+  color: #496174;
+}
+
+.questions-box{
+  padding: 20px 30px;
+  background-color: #f3f6fa;
+  border: 1px solid #E6EDF3;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.icon-alumni-profile{
+  margin-bottom: 8px;
+}
+

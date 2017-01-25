@@ -1,0 +1,13 @@
+{% extends "gradnet/base.html" %}
+{% load static %}
+
+
+{% block content %}
+ <form method="POST">
+        {% csrf_token %}
+
+         <input type="text" name="email_id">
+         <textarea name="message_body"></textarea>
+        <button class="btn btn-default" type="submit">Send</button>
+    </form>
+{% endblock %}

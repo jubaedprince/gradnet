@@ -1,0 +1,16 @@
+{% extends "gradnet/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+{% for story in object_list %}
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3><a href="{% url 'alumni-story-detail' pk=story.id %}">{{ story.title }}</a></h3></div>
+        <div class="panel-body">  <h3>{{ story.summary }}</h3></div>
+    </div>
+{% empty %}
+    <li>No story yet.</li>
+{% endfor %}
+
+{% endblock %}

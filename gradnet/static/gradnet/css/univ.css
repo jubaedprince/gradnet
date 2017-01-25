@@ -1,0 +1,16 @@
+html,body{
+  background: #FFFFFF !important;
+}
+
+.card{
+  border-radius: 4px !important;
+  border: 1px solid #E7E9EB !important;
+  /*box-shadow: rgba(0,0,0,0) 0 0px 0px !important;*/
+  box-shadow: none !important;
+
+}
+
+.card:hover{
+  border-color: #ccc !important;
+  box-shadow: rgba(0,0,0,.1) 0 1px 4px !important;
+}

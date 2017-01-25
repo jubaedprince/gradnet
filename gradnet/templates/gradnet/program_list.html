@@ -1,0 +1,80 @@
+{% load static %}
+
+
+    {% for program in object_list %}
+        <li><a href="{% url 'country-list' program_slug=program.slug %}">{{ program.name }}</a></li>
+    {% empty %}
+        <li>No programs yet.</li>
+    {% endfor %}
+
+    <style>
+    html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+#chartdiv {
+    position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+        #selectbox{
+            margin-top: 20%;
+            margin-left: 50%;
+        }
+    </style>
+ <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="{% static "gradnet/semantic/semantic.min.css" %}">
+<script src="{% static "gradnet/semantic/semantic.min.js" %}"></script>
+
+
+    <script>
+    /**
+ * Create the map
+ */
+var map = AmCharts.makeChart("chartdiv", {
+  "type": "map",
+  "theme": "light",
+  "projection": "eckert3",
+  "dataProvider": {
+    "map": "worldLow",
+    "getAreasFromMap": true
+  },
+  "areasSettings": {
+    "selectedColor": "#CC0000",
+    "selectable": true
+  }
+});
+
+/**
+ * Function which extracts currently selected country list.
+ * Returns array consisting of country ISO2 codes
+ */
+function preSelectCountries(list) {
+  for(var i = 0; i < list.length; i++) {
+    var area = map.getObjectById(list[i]);
+    area.showAsSelected = true;
+    map.returnInitialColor(area);
+  }
+}
+    </script>
+<div id="chartdiv"></div>
+<select id="selectbox" class="ui search dropdown">
+       {% for program in object_list %}
+
+  <option value="{% url 'country-list' program_slug=program.slug %}">{{ program.name }}</option>
+
+    {% empty %}
+        <li>No programs yet.</li>
+    {% endfor %}
+
+</select>

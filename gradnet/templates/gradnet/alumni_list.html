@@ -1,0 +1,87 @@
+{% extends "gradnet/base.html" %} {% load static %}
+
+
+{% block content %}
+
+    <!-- PRICING -->
+    <section class="section" id="pricing">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-12 text-center">
+
+                    <!-- <div class="alumni-listing-header"> -->
+                    <!-- <img class="alumni-listing-header-image" src="images/ucb.jpg" /> -->
+                    <!-- <p class="alumni-listing-header-text">
+                      Hello World!
+                    </p> -->
+                    <!-- <h3 class="alumni-listing-header-text">United States of America</h3> -->
+                    <!-- <p class="university-program">Master of Business Administration</p> -->
+                    <!-- </div> -->
+
+                    <div>
+                        <!-- <img style="position: relative;" src="images/ucb.jpg">
+                        <span style="">Works.</span> -->
+                        <h3 class="university-country">{{ university }}</h3>
+                        <p class="university-program">{{ university.location }}</p>
+                    </div>
+
+                </div>
+            </div> <!-- end row -->
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        {% for alumni in object_list %}
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div id="card-head-alumni-listing" class="card">
+                                    <div class="card-header-alumni-listing">
+                                        <!-- INFO -->
+                                        <a href="{% url 'alumni-detail' slug=alumni.slug %}">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 alumni-listing-detail">
+                                                <div class="col-md-4 col-sm-4 col-xs-4 alumni-listing-image">
+                                                    <div class="card-logo-alumni-listing">
+                                                        <img alt="UC" src="{{ alumni.avatar.url }}">
+                                                    </div>
+                                                    <button class="btn">Visit Profile</button>
+                                                </div>
+                                                <div class="col-md-8 col-sm-8 col-xs-8 alumni-listing-info">
+                                                    <div class="card-body-icon-alumni-listing">
+                                                        <h2>{{ alumni.name }}</h2>
+                                                        <div class="alumni-listing-info-more">
+                                                            <p><img class="work-icon"
+                                                                    src="{% static "gradnet/css/icons/study.svg" %}">
+                                                                Class
+                                                                of
+                                                                {{ alumni.class_of }}
+                                                            </p>
+                                                            <p><img class="work-icon"
+                                                                    src="{% static "gradnet/css/icons/portfolio.svg" %}">
+                                                                {{ alumni.current_position }},
+                                                                {{ alumni.current_employer }}</p>
+                                                            <p><img class="work-icon"
+                                                                    src="{% static "gradnet/css/icons/map-marker.svg" %}">
+                                                                {{ alumni.current_location }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <li>No alumni yet.</li>
+                        {% endfor %}
+
+                    </div>
+                </div><!-- end col -->
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div> <!-- end container -->
+    </section>
+    <!-- End Pricing -->
+{% endblock %}
